@@ -1,0 +1,37 @@
+@import '../../styles/index.less';
+
+.mm-pro-table-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+
+  &-reset {
+    color: #00a4f5;
+    cursor: pointer;
+
+    span {
+      margin-right: 5px;
+    }
+  }
+
+  &-side {
+    &-right {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &-options {
+    font-size: @Fs-4;
+    line-height: @Lh-4;
+    cursor: pointer;
+    margin-left: @Sp-6;
+
+    &-setting-popover {
+      .ant-popover-inner-content {
+        padding: 0;
+      }
+    }
+  }
+}

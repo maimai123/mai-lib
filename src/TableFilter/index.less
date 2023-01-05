@@ -1,0 +1,77 @@
+@import '../styles/index.less';
+
+.mm-table-filter {
+  position: relative;
+
+  > .ant-row .ant-col:last-child {
+    align-items: flex-end;
+  }
+
+  &-fixed {
+    height: 86px;
+    transition: all 0.2s;
+
+    &.mm-table-filter-expanded {
+      .mm-table-filter-form {
+        position: absolute;
+        width: 100%;
+        padding: @Sp-5 @Sp-8;
+        background-color: #ffffff;
+        box-shadow: @Sh-2;
+        border-radius: @Ra-1;
+        z-index: 9;
+      }
+    }
+  }
+
+  &-static {
+    height: 100%;
+
+    &.mm-table-filter-expanded {
+      .mm-table-filter-form {
+        padding-bottom: @Sp-6;
+      }
+    }
+  }
+
+  &-collapsed {
+    overflow: hidden;
+  }
+
+  &-btn {
+    padding-left: 9px;
+    padding-right: 9px;
+  }
+
+  .ant-picker,
+  .ant-picker-range {
+    display: flex;
+  }
+}
+.default-width {
+  width: 100%;
+  border-radius: 4px;
+
+  // 搜索框样式改造 =====START=====
+
+  .ant-input-affix-wrapper-focused,
+  .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover,
+  .ant-input:hover,
+  .ant-input:focus {
+    border-color: #d9d9d9;
+    border-right: none;
+    box-shadow: none;
+  }
+
+  > .ant-input-group
+    > .ant-input-group-addon:last-child
+    .ant-input-search-button:not(.ant-btn-primary) {
+    border-left: 1px solid transparent;
+
+    &:hover {
+      border: 1px solid #d9d9d9;
+      border-left: 1px solid transparent;
+    }
+  }
+  // 搜索框样式改造 =====END=====
+}
