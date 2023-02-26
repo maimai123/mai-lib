@@ -9,22 +9,20 @@ import './index.less';
 
 export type ImageUploadProps = Omit<UploadProps, 'onChange'>;
 
-const ImageUpload = (
-  props: ImageUploadProps & {
-    className?: string;
-    style?: React.CSSProperties;
-    // 文件大小，单位M
-    size?: number;
-    // 上传所需额外参数或返回上传额外参数的方法
-    params?: { [x: string]: any };
-    // 上传路径
-    url: string;
-    // 默认回填图片
-    value: any[];
-    // 回调函数
-    onChange: (url: string[]) => void;
-  },
-) => {
+const ImageUpload = (props: ImageUploadProps & {
+  className?: string;
+  style?: React.CSSProperties;
+  // 文件大小，单位M
+  size?: number;
+  // 上传所需额外参数或返回上传额外参数的方法
+  params?: { [x: string]: any };
+  // 上传路径
+  url: string;
+  // 默认回填图片
+  value: any[];
+  // 回调函数
+  onChange: (url: string[]) => void;
+}) => {
   const {
     className,
     style,
@@ -80,14 +78,18 @@ const ImageUpload = (
 
   const uploadButton = (
     <div>
-      <img className="mm-upload-multi_default" src={uploadPng} alt="pic" />
+      <img
+        className="iLab-upload-multi_default"
+        src={uploadPng}
+        alt="pic"
+      />
       <div>{getLocale('common.upload')}</div>
     </div>
   );
   return (
     <>
       <Upload
-        className={classnames('mm-upload-multi', className)}
+        className={classnames('iLab-upload-multi', className)}
         style={style}
         name="file"
         action={url}

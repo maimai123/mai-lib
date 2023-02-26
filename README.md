@@ -5,13 +5,13 @@
 Install dependencies,
 
 ```bash
-yarn
+npm i
 ```
 
 Start the dev server,
 
 ```bash
-npm run start
+npm start
 ```
 
 Build documentation,
@@ -34,7 +34,7 @@ npm run build
 npm i -g conventional-changelog-cli
 ```
 
-### Build
+### 再 dev 分支修改代码，改完以后切换到 master 分支以后执行
 
 ```bash
 $ npm run build
@@ -45,4 +45,12 @@ $ npm run cz
 $ git push
 ```
 
+### 发布
 
+```bash
+$ npm publish
+# 发布成功以后，切换到dev，生成changelog日志再提交
+$ npm run log
+$ npm run cz
+$ git push
+```

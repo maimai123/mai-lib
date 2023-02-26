@@ -77,12 +77,16 @@ const ImageUpload = (props: ImageUploadProps) => {
 
   return (
     <>
-      <div className="mm-upload-container">
+      <div className="iLab-upload-container">
         <Upload
           name="file"
           capture
           action={url}
-          className={classnames('mm-upload', className, 'mm-upload-preview')}
+          className={classnames(
+            'iLab-upload',
+            className,
+            'iLab-upload-preview',
+          )}
           style={style}
           beforeUpload={beforeUpload}
           onChange={handleChange}
@@ -91,12 +95,16 @@ const ImageUpload = (props: ImageUploadProps) => {
           {...rest}
         >
           <Spin spinning={loading}>
-            <div className="mm-upload_btn">
+            <div className="iLab-upload_btn">
               {link ? (
                 <>
-                  <img className="mm-upload_show" src={link} alt="pic" />
+                  <img
+                    className="iLab-upload_show"
+                    src={link}
+                    alt="pic"
+                  />
                   <Icon
-                    className="mm-upload_del"
+                    className="iLab-upload_del"
                     type="icon-guanbi2"
                     onClick={(e) => {
                       e.stopPropagation();
@@ -108,7 +116,7 @@ const ImageUpload = (props: ImageUploadProps) => {
               ) : (
                 <>
                   <img
-                    className="mm-upload_default"
+                    className="iLab-upload_default"
                     src={uploadPng}
                     alt="pic"
                   />

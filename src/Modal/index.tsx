@@ -6,6 +6,7 @@ import ConfigProviderCom from '@/ConfigProvider';
 import classnames from 'classnames';
 import './index.less';
 
+
 export interface ActionType {
   open: (val: any) => void;
   close: () => void;
@@ -17,8 +18,8 @@ interface IProps extends ModalProps {
   children: React.ReactNode;
   callback?: () => void;
   actionRef?:
-    | React.MutableRefObject<ActionType | undefined>
-    | ((actionRef: ActionType) => void);
+  | React.MutableRefObject<ActionType | undefined>
+  | ((actionRef: ActionType) => void);
 }
 
 const Index: React.FC<IProps> = (props: IProps) => {
@@ -42,7 +43,7 @@ const Index: React.FC<IProps> = (props: IProps) => {
     if (visible) {
       callback && callback();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
 
   useEffect(() => {
@@ -84,12 +85,12 @@ const Index: React.FC<IProps> = (props: IProps) => {
   return (
     <ConfigProviderCom>
       <Modal
-        className={classnames('mm-modal', className)}
+        className={classnames('iLab-modal', className)}
         style={style}
         destroyOnClose
         closeIcon={
           <Icon
-            className="mm-modal-close"
+            className="iLab-modal-close"
             type="icon-biaoge-quxiao"
             onClick={() => setVisible(false)}
           />
@@ -97,13 +98,9 @@ const Index: React.FC<IProps> = (props: IProps) => {
         onCancel={() => setVisible(false)}
         visible={visible}
         footer={
-          <Space className="mm-modal-footer">
-            {cancelText && <Button onClick={handleReset}>{cancelText}</Button>}
-            {okText && (
-              <Button type="primary" onClick={handleSubmit} loading={loading}>
-                {okText}
-              </Button>
-            )}
+          <Space className="iLab-modal-footer">
+            { cancelText && <Button onClick={handleReset}>{cancelText}</Button>}
+            { okText && (<Button type="primary" onClick={handleSubmit} loading={loading}>{okText}</Button>) }
           </Space>
         }
         {...rest}

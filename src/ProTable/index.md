@@ -396,6 +396,7 @@ export default () => {
         ],
       },
     },
+    { title: '文字', dataIndex: 'text', search: true },
     {
       title: '显示省市',
       dataIndex: 'show',
@@ -543,14 +544,54 @@ export default () => {
 };
 ```
 
+### 修改默认文案
+
+```tsx
+import React, { useRef } from 'react';
+import { ProTable, Icon } from 'mm-lib';
+import { ActionType } from 'mm-lib/lib/ProTable';
+import { Tag, Button, Space, Input } from 'antd';
+
+export default () => {
+
+  const columns = [
+    {
+      title: 'phone',
+      dataIndex: 'phone',
+      key: 'phone',
+    },
+    {
+      title: 'PersonName',
+      dataIndex: 'name',
+      order: 1,
+      key: 'name',
+    },
+    {
+      title: 'Gender',
+      dataIndex: 'gender',
+      key: 'gender',
+    },
+  ];
+
+  return (
+    <ProTable
+      columns={columns}
+      dataSource={[]}
+      style={{ padding: 0 }}
+      emptyText="这里没有数据哦"
+    />
+  );
+};
+```
+
 ### API
 
 #### ProTable
 
-tips: 开启表格右上角设置配置展示字段时，一个页面有多个表格可能导致存取 localStorage 冲突，可使用传递不同 id 避免
+tips: 开启表格右上角设置配置展示字段时，一个页面有多个表格可能导致存取 localStorage 冲突，可使用传递不同 id 避免，双语locale从cookie中取languageType，取不到再从localStorage中的userInfo中获取
 
-| 属性              | 说明                                                                                                                            | 类型                                                                | 默认值                         |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------ |
+| 属性               | 说明                                                            | 类型             | 默认值 |
+| ------------------ | --------- | ---------------- | ------ |
 | id                | 表格唯一标识符                                                                                                                  | string                                                              | 'basic'                        |
 | request           | 获取 `dataSource` 的方法                                                                                                        | `(params?: {pageSize,current},sort,filter) => {data,success,total}` | -                              |
 | params            | 用于 request 查询的额外参数，一旦变化会触发重新加载                                                                             | object                                                              | -                              |
@@ -565,12 +606,11 @@ tips: 开启表格右上角设置配置展示字段时，一个页面有多个�
 | defaultPagination | 默认分页方式                                                                                                                    | `{ current: number, pageSize: number }`                             | `{ current: 1, pageSize: 10 }` |
 | formMode          | 搜索项展开的展示模式                                                                                                            | `fixed` \| `static`                                                 | `fixed`                        |
 | defaultCollapsed  | 搜索表单默认收起状态                                                                                                            | boolean                                                             | true                           |
-| remember          | 是否记住搜索参数和分页（需要在详情页面配合，详情的路由需包含列表路由）                                                          |
+| remember          | 是否记住搜索参数和分页（需要在详情页面配合，详情的路由需包含列表路由）   |boolean           | false     |
 | checkFlip         | 列展示取反                                                                                                                      | boolean                                                             | false                          |
 | container         | 操作栏和表格中间的 slot                                                                                                         | React.ReactNode[]                                                   | []                             |
-| remember          | 是否记住搜索参数和分页（需要在详情页面配合，详情的路由需包含列表路                                                              |
-| 由）              | boolean                                                                                                                         | false                                                               |
-| resetRemember     | 是否清除搜索参数 （需先开启 remember，默认跳转不包含路由清除搜索参数，设置为 false 后可自行控制是否清除搜索参数）               | boolean                                                             | true                           |
+| emptyText         | 无数据文案      | string 或 React.ReactNode |   暂无数据   |
+| resetRemember     | 是否清除搜索参数 （需先开启 remember，默认跳转不包含路由清除搜索参数，设置为 false 后可自行控制是否清除搜索参数）               | boolean      | true    |
 | drawerProps       | 开启 toolbar.showFilter 后，透传抽屉组件配置                                                                                    | 详情见 DrawerFilter 组件                                            | --                             |
 | onFinish          | 请求完后回调                                                                                                                    | (values: { total, list }) => void                                   | --                             |
 | onFilterSearch    | 搜索回调                                                                                                                        | (values: any) => void                                               | --                             |
@@ -617,8 +657,8 @@ useEffect(() => {
 
 #### ProColumn 列定义
 
-| 属性     | 说明     | 类型      | 默认值 |
-| -------- | -------- | --------- | ------ |
+| 属性               | 说明                                                            | 类型             | 默认值 |
+| ------------------ | --------- | ---------------- | ------ |
 | title          | 列头显示文字，如搜索名称和表格名称不一致 可配置 fieldProps.label 指定搜索名称 | ReactNode                                                                                                            | ({ sortOrder, sortColumn, filters }) => ReactNode | -- （函数用法 3.10.0 后支持） |
 | dataIndex      | 列数据在数据项中对应的路径                                                    | string                                                                                                               | --                                                |
 | key            | React 需要的 key，如果已经设置了唯一的 dataIndex，可以忽略这个属性            | string                                                                                                               | --                                                |
@@ -659,8 +699,8 @@ type IValueEnum = Map<
 
 #### toolbar Props 定义
 
-| 属性     | 说明     | 类型      | 默认值 |
-| -------- | -------- | --------- | ------ |
+| 属性               | 说明                                                            | 类型             | 默认值 |
+| ------------------ | --------- | ---------------- | ------ |
 | actions    | 左侧操作栏                                                   | `React.ReactNode[]`                              | --     |
 | options    | 右侧操作栏，包括刷新、列展示选择功能                         | `{ refresh?: boolean, columnSetting?: boolean }` | --     |
 | showFilter | 右侧操作栏功能插槽前显示筛选按钮（开启则不展示表格上方筛选） | boolean                                          | false  |

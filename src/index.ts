@@ -15,4 +15,5 @@ export { default as Modal } from './Modal';
 export { default as Confirm } from './Confirm';
 export { default as EditableTable } from './EditableTable';
 export { default as Toggle } from './Toggle';
+export { default as TransferTable } from './TransferTable';
 export { default as ProSelect } from './ProSelect';

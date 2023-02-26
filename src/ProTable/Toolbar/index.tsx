@@ -83,21 +83,21 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
 
   return (
     <div
-      className={classnames('mm-pro-table-toolbar', className)}
+      className={classnames('iLab-pro-table-toolbar', className)}
       style={style}
     >
-      <div className={'mm-pro-table-toolbar-side-left'}>
+      <div className={'iLab-pro-table-toolbar-side-left'}>
         {actions && (
-          <Space className={'mm-pro-table-toolbar-actions'}>{actions}</Space>
+          <Space className={'iLab-pro-table-toolbar-actions'}>{actions}</Space>
         )}
       </div>
-      <div className={'mm-pro-table-toolbar-side-right'}>
-        <Space className={'mm-pro-table-toolbar-slot'}>
+      <div className={'iLab-pro-table-toolbar-side-right'}>
+        <Space className={'iLab-pro-table-toolbar-slot'}>
           {showFilter &&
             fields &&
             _.intersectionWith(fieldNames, searchNames).length > 0 && (
               <div
-                className="mm-pro-table-toolbar-reset"
+                className="iLab-pro-table-toolbar-reset"
                 key="reset"
                 onClick={() => {
                   setKeyword(undefined);
@@ -107,7 +107,7 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
                 <Icon type="icon-zhongzhi1" />
                 {getLocale('common.reset')}
               </div>
-            )}
+          )}
           {/* 左侧下拉等筛选 */}
           {!!leftFilters?.length &&
             leftFilters?.map((item) => {
@@ -192,14 +192,14 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
             })}
         </Space>
         {showOptionsBar && (
-          <Space className={'mm-pro-table-toolbar-options'} size={12}>
+          <Space className={'iLab-pro-table-toolbar-options'} size={12}>
             {refresh && (
               <Icon type={'icon-shuaxin'} spin={loading} onClick={fetchData} />
             )}
             {columnSetting && (
               <Popover
                 overlayClassName={
-                  'mm-pro-table-toolbar-options-setting-popover'
+                  'iLab-pro-table-toolbar-options-setting-popover'
                 }
                 content={<ColumnSetting />}
                 trigger="click"

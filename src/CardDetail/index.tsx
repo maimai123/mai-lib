@@ -27,32 +27,19 @@ export interface ICardDetailProps {
 }
 
 export default function CardDetail(props: ICardDetailProps) {
-  const {
-    className,
-    style,
-    list = [],
-    column = 4,
-    title,
-    renderCustom,
-    slot,
-    descProps,
-  } = props;
+  const { className, style, list = [], column = 4, title, renderCustom, slot, descProps } = props;
   return (
-    <div className={classnames('mm-cardDetail', className)} style={style}>
+    <div className={classnames('iLab-cardDetail', className)} style={style}>
       <Descriptions column={column} title={title} {...descProps}>
-        {slot && (
-          <Descriptions.Item key="slot" span={+column}>
-            {slot}
-          </Descriptions.Item>
-        )}
-        {list.map((item: Item, index: number) => (
-          <Descriptions.Item key={index} {...item}>
-            {item.value || '-'}
-          </Descriptions.Item>
-        ))}
+        {slot && <Descriptions.Item key="slot" span={+column}>{slot}</Descriptions.Item>}
+        {
+          list.map((item: Item, index: number) => (
+            <Descriptions.Item key={index} {...item}>{item.value || '-'}</Descriptions.Item>
+          ))
+        }
       </Descriptions>
-      {renderCustom && <Divider />}
-      {renderCustom}
+      { renderCustom && <Divider /> }
+      { renderCustom }
     </div>
   );
 }

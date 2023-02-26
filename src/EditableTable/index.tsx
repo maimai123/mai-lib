@@ -148,27 +148,27 @@ const EditableTable: React.FC<EditableTableProps> = (
   };
   const handleResize =
     (index: number) =>
-    (e: any, { size }: any) => {
-      const nextColumns = [...tableColumns];
-      nextColumns[index] = {
-        ...nextColumns[index],
-        // @ts-ignore
-        width: size.width,
+      (e: any, { size }: any) => {
+        const nextColumns = [...tableColumns];
+        nextColumns[index] = {
+          ...nextColumns[index],
+          // @ts-ignore
+          width: size.width,
+        };
+        setTableColumns(nextColumns);
       };
-      setTableColumns(nextColumns);
-    };
 
   const components = columnResize
     ? {
-        body: { row: EditableRow, cell: EditableCell },
-        header: { cell: ResizableTitle },
-      }
+      body: { row: EditableRow, cell: EditableCell },
+      header: { cell: ResizableTitle },
+    }
     : {
-        body: {
-          row: EditableRow,
-          cell: EditableCell,
-        },
-      };
+      body: {
+        row: EditableRow,
+        cell: EditableCell,
+      },
+    };
 
   const handleSave = (row: any) => {
     // @ts-ignore
@@ -215,9 +215,13 @@ const EditableTable: React.FC<EditableTableProps> = (
   });
 
   return (
-    <ConfigProviderCom>
+    <ConfigProviderCom >
       <div
-        className={classnames('mm-pro-table', 'mm-editableTable', className)}
+        className={classnames(
+          'iLab-pro-table',
+          'iLab-editableTable',
+          className,
+        )}
         style={style}
       >
         <Form

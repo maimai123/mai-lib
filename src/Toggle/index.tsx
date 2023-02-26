@@ -25,13 +25,7 @@ const Index = (props: IProps) => {
     style,
     title,
     children,
-    expandIcon = ({ isActive }) => (
-      <Icon
-        type="icon-xiaojiantou-you"
-        style={{ fontSize: 20 }}
-        rotate={isActive ? 90 : -90}
-      />
-    ),
+    expandIcon = ({ isActive }) => <Icon type="icon-xiaojiantou-you" style={{ fontSize: 20 }} rotate={isActive ? 90 : -90} />,
     expandIconPosition = 'end',
     follow,
     bordered = false,
@@ -40,11 +34,7 @@ const Index = (props: IProps) => {
   } = props;
   return (
     <Collapse
-      className={classnames(
-        'mm-toggle',
-        className,
-        follow && 'mm-toggle__follow',
-      )}
+      className={classnames('iLab-toggle', className, follow && 'iLab-toggle__follow')}
       bordered={bordered}
       defaultActiveKey={defaultColspan ? ['1'] : []}
       expandIcon={expandIcon}

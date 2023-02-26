@@ -20,14 +20,15 @@ const Index = (props: IProps) => {
   } = props;
 
   return Modal.confirm({
-    className: classnames('mm-modal-confirm', className),
+    className: classnames('iLab-modal-confirm', className),
     icon: null,
     closable: true,
     okText,
     cancelText,
-    closeIcon: (
-      <Icon className="mm-modal-confirm-close" type="icon-biaoge-quxiao" />
-    ),
+    closeIcon: <Icon
+      className="iLab-modal-confirm-close"
+      type="icon-biaoge-quxiao"
+    />,
     ...rest,
   });
 };

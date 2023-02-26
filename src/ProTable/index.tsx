@@ -25,6 +25,7 @@ import Toolbar from './Toolbar';
 import noDataPng from '@/assets/noData.png';
 import { IPagination, ProColumn, ActionType, ProTableProps } from './interface';
 
+
 const ProTable = <RecordType extends object = any>(
   props: ProTableProps<RecordType>,
 ): JSX.Element => {
@@ -49,6 +50,7 @@ const ProTable = <RecordType extends object = any>(
     drawerProps,
     pagination,
     remember,
+    emptyText,
     checkFlip = false,
     resetRemember = true,
     onFinish,
@@ -80,7 +82,7 @@ const ProTable = <RecordType extends object = any>(
   const [loading, setLoading] = useSafeState<boolean>(false);
   // 表格字段
   const [tableColumns, setTableColumns] = useSafeState<
-    Array<ProColumn<RecordType>>
+  Array<ProColumn<RecordType>>
   >([]);
   // 选中列字段
   const [selectedDataIndex, setSelectedDataIndex] = useSafeState<string[]>([]);
@@ -119,19 +121,10 @@ const ProTable = <RecordType extends object = any>(
     null;
   sParams &&
     Object.keys(sParams).forEach((item) => {
-      if (
-        isDateFormat(sParams[item]) &&
-        columns.filter((it) => it.dataIndex === item).length > 0 &&
-        columns.filter((it) => it.dataIndex === item)[0].valueType === 'date'
-      ) {
+      if (isDateFormat(sParams[item]) && (columns.filter((it) => it.dataIndex === item).length > 0 && columns.filter((it) => it.dataIndex === item)[0].valueType === 'date')) {
         sParams[item] = dayjs(sParams[item]);
       } else if (Array.isArray(sParams[item]) && sParams[item].length > 1) {
-        if (
-          isDateFormat(sParams[item][0]) &&
-          columns.filter((it) => it.dataIndex === item).length > 0 &&
-          columns.filter((it) => it.dataIndex === item)[0].valueType ===
-            'dateRange'
-        ) {
+        if (isDateFormat(sParams[item][0]) && (columns.filter((it) => it.dataIndex === item).length > 0 && columns.filter((it) => it.dataIndex === item)[0].valueType === 'dateRange')) {
           sParams[item] = [dayjs(sParams[item][0]), dayjs(sParams[item][1])];
         }
       }
@@ -193,9 +186,9 @@ const ProTable = <RecordType extends object = any>(
         const defaultFilter = toolbar?.showFilter
           ? removeObjectNull(formData)
           : {
-              ...removeObjectNull(formData),
-              ...tableFilterRef.current?.getFieldsValue(),
-            } || {};
+            ...removeObjectNull(formData),
+            ...tableFilterRef.current?.getFieldsValue(),
+          } || {};
         return { ...defaultFilter, ...proSort, ...proFilter };
       },
       setFilterValue: (val) => {
@@ -317,18 +310,18 @@ const ProTable = <RecordType extends object = any>(
           return {
             ...item,
             render: (value: string) =>
-              isInvalidValue(value)
+              (isInvalidValue(value)
                 ? DEFAULT_EMPTY_VALUE
                 : dayjs(value).format(
-                    item.dateTimeFormat || DEFAULT_DATE_TIME_FORMAT,
-                  ),
+                  item.dateTimeFormat || DEFAULT_DATE_TIME_FORMAT,
+                )),
           };
         }
         if (item?.render) return item;
         return {
           ...item,
           render: (value: any) =>
-            isInvalidValue(value) ? DEFAULT_EMPTY_VALUE : value,
+            (isInvalidValue(value) ? DEFAULT_EMPTY_VALUE : value),
         };
       });
     // 从localStorage取 || 选中设置的
@@ -339,7 +332,6 @@ const ProTable = <RecordType extends object = any>(
     const resetColumn = getParamsStorage('Col')
       ? (getParamsStorage('Col') || '').split(',')
       : filterColumn;
-    console.log(resetColumn);
     setSelectedDataIndex(resetColumn);
     return ret;
   };
@@ -478,15 +470,15 @@ const ProTable = <RecordType extends object = any>(
 
   const handleResize =
     (index: number) =>
-    (e: any, { size }: any) => {
-      const nextColumns = [...tableColumns];
-      nextColumns[index] = {
-        ...nextColumns[index],
-        // @ts-ignore
-        width: size.width,
+      (e: any, { size }: any) => {
+        const nextColumns = [...tableColumns];
+        nextColumns[index] = {
+          ...nextColumns[index],
+          // @ts-ignore
+          width: size.width,
+        };
+        setTableColumns(nextColumns);
       };
-      setTableColumns(nextColumns);
-    };
 
   const resetColumn = tableColumns
     .map((col: any, index: any) => {
@@ -521,13 +513,13 @@ const ProTable = <RecordType extends object = any>(
       >
         <div
           id={id}
-          className={classnames('mm-pro-table', className)}
+          className={classnames('iLab-pro-table', className)}
           style={style}
         >
           {/* 搜索表单 默认展示搜索表单 toolbar showFilter开启则不展示 */}
           {!toolbar?.showFilter && (
             <TableFilter
-              className={classnames('mm-pro-table-filter', formClassName)}
+              className={classnames('iLab-pro-table-filter', formClassName)}
               style={formStyle}
               fields={getFilterByType('filter').map((item) => ({
                 ...item,
@@ -560,7 +552,7 @@ const ProTable = <RecordType extends object = any>(
           {container && <>{container}</>}
           {/* 表格 */}
           <Table
-            className={classnames('mm-pro-table-table', tableClassName)}
+            className={classnames('iLab-pro-table-table', tableClassName)}
             style={tableStyle}
             key={id}
             columns={resetColumn}
@@ -575,7 +567,7 @@ const ProTable = <RecordType extends object = any>(
               emptyText: (
                 <div className="empty-container">
                   <img src={noDataPng} />
-                  <div>{getLocale('common.noXData')}</div>
+                  <div>{emptyText || getLocale('common.noData')}</div>
                 </div>
               ),
             }}
@@ -591,10 +583,7 @@ const ProTable = <RecordType extends object = any>(
                 total,
                 showQuickJumper: true,
                 showSizeChanger: true,
-                showTotal: (t: any) =>
-                  `${getLocale('common.total')} ${t} ${getLocale(
-                    'common.item',
-                  )}`,
+                showTotal: (t: any) => `${getLocale('common.total')} ${t} ${getLocale('common.item')}`,
                 onChange: handlePageChange,
                 onShowSizeChange: handlePageSizeChange,
               }
@@ -603,8 +592,8 @@ const ProTable = <RecordType extends object = any>(
               changePagination,
               filters: Record<string, Array<Key | boolean> | null>,
               sorter:
-                | SorterResult<RecordType>
-                | Array<SorterResult<RecordType>>,
+              | SorterResult<RecordType>
+              | Array<SorterResult<RecordType>>,
               extra,
             ) => {
               if (rest.onChange) {

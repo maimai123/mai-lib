@@ -75,6 +75,7 @@ export interface ProTableProps<Column> extends TableProps<Column> {
   tableClassName?: string;
   tableStyle?: React.CSSProperties;
   formClassName?: string;
+  emptyText?: string | React.ReactNode;
   formStyle?: React.CSSProperties;
   formProps?: IFormProps;
   toolbar?: ToolbarProps;

@@ -1,5 +1,13 @@
 import React, { forwardRef, useEffect, useImperativeHandle } from 'react';
-import { Row, Col, Form, Button, Space, FormProps, RowProps } from 'antd';
+import {
+  Row,
+  Col,
+  Form,
+  Button,
+  Space,
+  FormProps,
+  RowProps,
+} from 'antd';
 import { getLocale } from '@/utils';
 import classnames from 'classnames';
 import ConfigProviderCom from '@/ConfigProvider';
@@ -54,6 +62,7 @@ const FilterForm: React.ForwardRefRenderFunction<unknown, FilterFormProps> = (
     init && form.setFieldsValue(formProps?.initialValues);
   }, [formProps?.initialValues]); // 监听外部设置更新
 
+
   useImperativeHandle(parentRef, () => {
     return {
       ...form,
@@ -82,14 +91,14 @@ const FilterForm: React.ForwardRefRenderFunction<unknown, FilterFormProps> = (
   return (
     <ConfigProviderCom>
       <Form
-        className={classnames('mm-filter-form', className)}
+        className={classnames('iLab-filter-form', className)}
         style={style}
         form={form}
         colon={false}
         layout="vertical"
         {...formProps}
       >
-        <Row gutter={16} className="mm-filter-form-row" {...rowProps}>
+        <Row gutter={16} className="iLab-filter-form-row" {...rowProps}>
           {options
             .sort((a, b) => (a.order || 0) - (b.order || 0))
             .map((item: IField, index: React.Key | null | undefined) => {
@@ -104,16 +113,15 @@ const FilterForm: React.ForwardRefRenderFunction<unknown, FilterFormProps> = (
                 ...rest
               } = item;
               return (
-                show && (
-                  <Col
-                    key={index}
-                    span={defaultSpan}
-                    className="mm-filter-form-col"
-                    {...colProps}
-                  >
-                    <Form.Item {...rest}>{matchItem(item)}</Form.Item>
-                  </Col>
-                )
+                show &&
+                <Col
+                  key={index}
+                  span={defaultSpan}
+                  className="iLab-filter-form-col"
+                  {...colProps}
+                >
+                  <Form.Item {...rest}>{matchItem(item)}</Form.Item>
+                </Col>
               );
             })}
         </Row>
@@ -122,15 +130,13 @@ const FilterForm: React.ForwardRefRenderFunction<unknown, FilterFormProps> = (
             {renderCustomAction
               ? renderCustomAction()
               : showAction && (
-                  <Space>
-                    <Button onClick={handleReset}>
-                      {getLocale('common.reset')}
-                    </Button>
-                    <Button type="primary" onClick={handleSubmit}>
-                      {getLocale('common.ok')}
-                    </Button>
-                  </Space>
-                )}
+              <Space>
+                <Button onClick={handleReset}>{getLocale('common.reset')}</Button>
+                <Button type="primary" onClick={handleSubmit}>
+                  {getLocale('common.ok')}
+                </Button>
+              </Space>
+              )}
           </Space>
         </Form.Item>
       </Form>

@@ -15,7 +15,7 @@ export default {
   'common.packUp': 'Pack Up',
   'common.expand': 'Expand',
   'common.total': 'Total',
-  'common.item': 'items',
+  'common.item': 'item(s)',
   'common.noData': 'No Data',
   'common.column': 'Column',
   'common.selectAll': 'Select All',

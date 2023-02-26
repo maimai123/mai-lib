@@ -53,8 +53,8 @@ export interface TableFilterProps {
   className?: string;
   style?: React.CSSProperties;
   actionRef?:
-    | React.MutableRefObject<ActionType | undefined>
-    | ((actionRef: ActionType) => void);
+  | React.MutableRefObject<ActionType | undefined>
+  | ((actionRef: ActionType) => void);
   mode?: 'fixed' | 'static';
   defaultCollapsed?: boolean;
 }
@@ -121,25 +121,23 @@ const TableFilter: React.FC<TableFilterProps> = ({
   };
 
   if (!(fields instanceof Array && fields.length)) return null;
-
-  const offset =
-    (3 -
-      (renderFields(fields).filter((item) => item.show).length % (24 / SPAN))) *
-    6;
-
+  const showCount = renderFields(fields).filter((item) => item.show).length;
+  const offset = (3 - (showCount % (24 / SPAN))) * 6;
   return (
     <ConfigProviderCom>
       <div
         className={classnames(
-          'mm-table-filter',
-          collapsed ? 'mm-table-filter-collapsed' : 'mm-table-filter-expanded',
-          `mm-table-filter-${mode}`,
+          'iLab-table-filter',
+          collapsed
+            ? 'iLab-table-filter-collapsed'
+            : 'iLab-table-filter-expanded',
+          `iLab-table-filter-${mode}`,
           className,
         )}
         style={style}
       >
         <Form
-          className="mm-table-filter-form"
+          className="iLab-table-filter-form"
           layout="vertical"
           form={form}
           {...formProps}
@@ -158,54 +156,47 @@ const TableFilter: React.FC<TableFilterProps> = ({
               } = filed;
 
               return (
-                show && (
-                  <Col span={SPAN} key={filed.name}>
-                    <Form.Item {...rest}>{matchItem(filed)}</Form.Item>
-                  </Col>
-                )
+                show &&
+                <Col
+                  span={SPAN}
+                  key={filed.name}
+                >
+                  <Form.Item {...rest}>{matchItem(filed)}</Form.Item>
+                </Col>
               );
             })}
-            <Col span={SPAN} offset={!collapsed ? offset : 0} key="actions">
+            <Col span={SPAN} offset={offset} key="actions">
               <Form.Item
                 label=" "
                 noStyle={
-                  renderFields(fields).filter((item) => item.show).length %
-                    (LINE_COUNT + 1) ===
-                  0
-                }
+                renderFields(fields).filter((item) => item.show).length %
+                  (LINE_COUNT + 1) ===
+                0
+              }
               >
                 <div style={{ textAlign: 'right' }}>
                   <Space>
                     <Button
-                      className="mm-table-filter-btn"
+                      className="iLab-table-filter-btn"
                       type="primary"
                       onClick={search}
                     >
                       {getLocale('common.search')}
                     </Button>
-                    <Button className="mm-table-filter-btn" onClick={reset}>
+                    <Button className="iLab-table-filter-btn" onClick={reset}>
                       {getLocale('common.reset')}
                     </Button>
                   </Space>
 
                   {needCollapsedButton && (
-                    <Button
-                      type="link"
-                      onClick={() => {
-                        setCollapsed(!collapsed);
-                      }}
-                    >
-                      {collapsed ? (
-                        <>
-                          {getLocale('common.expand')} <DownOutlined />
-                        </>
-                      ) : (
-                        <>
-                          {getLocale('common.packUp')}
-                          <UpOutlined />
-                        </>
-                      )}
-                    </Button>
+                  <Button
+                    type="link"
+                    onClick={() => {
+                      setCollapsed(!collapsed);
+                    }}
+                  >
+                    {collapsed ? <>{getLocale('common.expand')} <DownOutlined /></> : <>{getLocale('common.packUp')}<UpOutlined /></>}
+                  </Button>
                   )}
                 </div>
               </Form.Item>

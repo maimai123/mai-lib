@@ -1,5 +1,5 @@
-import locales from './locales/index';
 import Cookies from 'js-cookie';
+import locales from './locales/index';
 /**
  * 删除对象中所有的空值
  * @param obj
@@ -7,7 +7,7 @@ import Cookies from 'js-cookie';
 export const removeObjectNull = (obj: { [key: string]: any }) => {
   const newObj: { [key: string]: any } = {};
   Object.keys(obj || {}).forEach((key) => {
-    if (obj[key]) {
+    if (obj[key] || obj[key] === 0) {
       newObj[key] = obj[key];
     }
   });
@@ -46,12 +46,17 @@ export const exportBlob = (blob: any, fileName?: any) => {
  * @param key
  */
 export const getLocale = (key: any) => {
-  const local_locale = Cookies.get('locale');
-
+  const languageType = Cookies.get('languageType');
+  let local_locale = languageType;
+  const userInfo = localStorage.getItem('userInfo');
+  if (!local_locale && userInfo) {
+    local_locale = JSON.parse(userInfo)?.languageType;
+  }
   let lang = 'zh';
-  if (local_locale === 'en_US') {
+  if (local_locale?.includes('en')) {
     lang = 'en';
   }
+
   // @ts-ignore
   return locales[lang][key];
 };

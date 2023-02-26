@@ -16,11 +16,11 @@ const Preview: React.FC<PreviewProps> = ({ src, onRemove, onPreview }) => {
   };
 
   return (
-    <div className="mm-upload-preview">
-      <Image className="mm-upload-preview-image" src={src} preview={false} />
-      <div className="mm-upload-preview-mask" onClick={onPreview}>
+    <div className="iLab-upload-preview">
+      <Image className="iLab-upload-preview-image" src={src} preview={false} />
+      <div className="iLab-upload-preview-mask" onClick={onPreview}>
         <Icon
-          className="mm-upload-preview-delete"
+          className="iLab-upload-preview-delete"
           type="icon-guanbi2"
           onClick={handleRemove}
         />

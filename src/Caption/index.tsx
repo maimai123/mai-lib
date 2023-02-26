@@ -11,8 +11,8 @@ export interface ICaptionProps {
 
 export default function Caption({ className, style, children }: ICaptionProps) {
   return (
-    <div className={classnames('mm-caption', className)} style={style}>
-      <span className="mm-caption-sign" />
+    <div className={classnames('iLab-caption', className)} style={style}>
+      <span className="iLab-caption-sign" />
       {children}
     </div>
   );
