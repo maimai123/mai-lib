@@ -10,7 +10,7 @@ group:
 
 ```tsx
 import React from 'react';
-import { Tag, Icon } from 'mm-lib';
+import { Tag, Icon } from 'mai-lib';
 
 export default () => (
   <div>

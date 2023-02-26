@@ -10,7 +10,7 @@ group:
 
 ```tsx
 import React from 'react';
-import { TableFilter } from 'mm-lib';
+import { TableFilter } from 'mai-lib';
 
 export default () => {
   const options = [

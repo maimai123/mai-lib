@@ -1,4 +1,4 @@
-# mm-lib
+# mai-lib
 
 ## Getting Started
 

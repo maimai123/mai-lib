@@ -12,8 +12,8 @@ Demo: 默认
 
 ```tsx
 import React, { useState, useRef } from 'react';
-import { DrawerFilter } from 'mm-lib';
-import { ActionType } from 'mm-lib/lib/DrawerFilter';
+import { DrawerFilter } from 'mai-lib';
+import { ActionType } from 'mai-lib/lib/DrawerFilter';
 import { Input, Button } from 'antd';
 
 export default () => {
@@ -117,7 +117,7 @@ Demo: 自定义,可通过 actionRef 手动设置字段值, 如需等数据提交
 
 ```tsx
 import React, { useRef } from 'react';
-import { DrawerFilter } from 'mm-lib';
+import { DrawerFilter } from 'mai-lib';
 import { Input, Button } from 'antd';
 import { ActionType } from './index';
 

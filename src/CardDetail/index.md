@@ -11,7 +11,7 @@ group:
 ```tsx
 import React from 'react';
 import { Button } from 'antd';
-import { CardDetail, Caption } from 'mm-lib';
+import { CardDetail, Caption } from 'mai-lib';
 
 export default () => {
   const list = [

@@ -10,7 +10,7 @@ group:
 
 ```tsx
 import React from 'react';
-import { Icon } from 'mm-lib';
+import { Icon } from 'mai-lib';
 
 export default () => <Icon type="icon-kucunrizhichanggui" />;
 ```

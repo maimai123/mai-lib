@@ -12,7 +12,7 @@ table 分页穿梭组件
 
 ```tsx
 import React, { useState, useEffect } from 'react';
-import { TransferTable } from 'mm-lib';
+import { TransferTable } from 'mai-lib';
 import { Button, Space } from 'antd';
 import { uniq } from 'lodash';
 export default () => {

@@ -10,7 +10,7 @@ group:
 
 ```tsx
 import React, { useState } from 'react';
-import { ChangeInput } from 'mm-lib';
+import { ChangeInput } from 'mai-lib';
 
 export default () => {
   const [text, setText] = useState('基础信息');

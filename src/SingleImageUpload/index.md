@@ -10,7 +10,7 @@ group:
 
 ```tsx
 import React from 'react';
-import { SingleImageUpload } from 'mm-lib';
+import { SingleImageUpload } from 'mai-lib';
 
 export default () => {
   const handleChange = (url) => {

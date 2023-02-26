@@ -10,7 +10,7 @@ group:
 
 ```tsx
 import React from 'react';
-import { Caption } from 'mm-lib';
+import { Caption } from 'mai-lib';
 
 export default () => <Caption className="ecology">基础信息</Caption>;
 ```

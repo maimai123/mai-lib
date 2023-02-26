@@ -10,7 +10,7 @@ group:
 
 ```tsx
 import React from 'react';
-import { MultiImageUpload } from 'mm-lib';
+import { MultiImageUpload } from 'mai-lib';
 
 export default () => {
   const handleChange = (url) => {

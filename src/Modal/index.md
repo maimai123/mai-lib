@@ -12,7 +12,7 @@ Demo: 默认
 
 ```tsx
 import React from 'react';
-import { Modal } from 'mm-lib';
+import { Modal } from 'mai-lib';
 import { Input, Button } from 'antd';
 
 export default () => {
@@ -42,7 +42,7 @@ Demo: 配合 FilterForm
 
 ```tsx
 import React, { useRef } from 'react';
-import { Modal, FilterForm } from 'mm-lib';
+import { Modal, FilterForm } from 'mai-lib';
 import { Input, Button } from 'antd';
 import { ActionType } from './index';
 
@@ -109,7 +109,7 @@ Demo: 配合 ProTable
 
 ```tsx
 import React, { useState } from 'react';
-import { Modal, ProTable } from 'mm-lib';
+import { Modal, ProTable } from 'mai-lib';
 import { Input, Button } from 'antd';
 
 export default () => {

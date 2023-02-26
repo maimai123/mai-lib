@@ -10,8 +10,8 @@ group:
 
 ```tsx
 import React, { useRef } from 'react';
-import { ProTable, Icon } from 'mm-lib';
-import { ActionType } from 'mm-lib/lib/ProTable';
+import { ProTable, Icon } from 'mai-lib';
+import { ActionType } from 'mai-lib/lib/ProTable';
 import { Tag, Button, Space, Input } from 'antd';
 import { formatPaginationParams, formatTableRequest } from './utils';
 
@@ -246,8 +246,8 @@ export default () => {
 
 ```tsx
 import React, { useState, useEffect, useRef } from 'react';
-import { ProTable } from 'mm-lib';
-import { ActionType } from 'mm-lib/lib/ProTable';
+import { ProTable } from 'mai-lib';
+import { ActionType } from 'mai-lib/lib/ProTable';
 import { Tag, Button, Space, Input, message } from 'antd';
 
 export default () => {
@@ -548,8 +548,8 @@ export default () => {
 
 ```tsx
 import React, { useRef } from 'react';
-import { ProTable, Icon } from 'mm-lib';
-import { ActionType } from 'mm-lib/lib/ProTable';
+import { ProTable, Icon } from 'mai-lib';
+import { ActionType } from 'mai-lib/lib/ProTable';
 import { Tag, Button, Space, Input } from 'antd';
 
 export default () => {

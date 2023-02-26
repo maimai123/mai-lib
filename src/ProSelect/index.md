@@ -10,7 +10,7 @@ group:
 
 ```tsx
 import React from 'react';
-import { ProSelect, Icon } from 'mm-lib';
+import { ProSelect, Icon } from 'mai-lib';
 
 const options = [
   {
@@ -60,7 +60,7 @@ export default () => (
 
 ```tsx
 import React from 'react';
-import { ProSelect, Icon } from 'mm-lib';
+import { ProSelect, Icon } from 'mai-lib';
 
 const options = [
   {

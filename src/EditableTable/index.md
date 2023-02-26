@@ -10,7 +10,7 @@ group:
 
 ```tsx
 import React, { useState, useEffect, useRef } from 'react';
-import { EditableTable } from 'mm-lib';
+import { EditableTable } from 'mai-lib';
 import { Space, Button } from 'antd';
 
 export default () => {

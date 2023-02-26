@@ -12,7 +12,7 @@ Demo: 默认
 
 ```tsx
 import React from 'react';
-import { Confirm } from 'mm-lib';
+import { Confirm } from 'mai-lib';
 import { Input, Button } from 'antd';
 
 export default () => {

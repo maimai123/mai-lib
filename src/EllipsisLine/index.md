@@ -12,7 +12,7 @@ Demo:
 
 ```tsx
 import React from 'react';
-import { EllipsisLine } from 'mm-lib';
+import { EllipsisLine } from 'mai-lib';
 
 export default () => (
   <div style={{ width: 500, border: '1px solid #bdbdbd', padding: 16 }}>

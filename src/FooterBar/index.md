@@ -10,7 +10,7 @@ group:
 
 ```tsx
 import React from 'react';
-import { FooterBar } from 'mm-lib';
+import { FooterBar } from 'mai-lib';
 import { Space, Button } from 'antd';
 
 export default () => (

@@ -10,7 +10,7 @@ Demo: 展示操作项
 
 ```tsx
 import React from 'react';
-import { FilterForm } from 'mm-lib';
+import { FilterForm } from 'mai-lib';
 import { Input } from 'antd';
 
 export default () => {
@@ -127,7 +127,7 @@ Demo: 自定义操作项
 
 ```tsx
 import React, { useRef, useState } from 'react';
-import { FilterForm } from 'mm-lib';
+import { FilterForm } from 'mai-lib';
 import { Button } from 'antd';
 
 export default () => {

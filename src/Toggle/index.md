@@ -12,7 +12,7 @@ group:
 
 ```tsx
 import React from 'react';
-import { Toggle, Icon } from 'mm-lib';
+import { Toggle, Icon } from 'mai-lib';
 
 export default () => {
   return (
@@ -29,7 +29,7 @@ export default () => {
 
 ```tsx
 import React from 'react';
-import { Toggle, Icon } from 'mm-lib';
+import { Toggle, Icon } from 'mai-lib';
 
 export default () => {
   return (
@@ -46,7 +46,7 @@ export default () => {
 
 ```tsx
 import React from 'react';
-import { Toggle, Icon } from 'mm-lib';
+import { Toggle, Icon } from 'mai-lib';
 
 export default () => {
   return (
